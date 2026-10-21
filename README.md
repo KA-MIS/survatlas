@@ -10,7 +10,17 @@
 
 An independent, approximately year-long engineering project exploring how useful information and navigation tools can remain accessible when connectivity cannot be relied upon.
 
-[**Explore the roadmap**](https://github.com/KA-MIS/survatlas/issues) · [**Development progress**](#development-progress) · [**Architecture**](#system-architecture) · [**Performance notes**](#engineering-validation)
+[**Release roadmap**](ROADMAP.md) · [**Development progress**](#development-progress) · [**Architecture**](#system-architecture) · [**Performance notes**](#engineering-validation)
+
+</div>
+
+<div align="center">
+
+[![Documentation CI](https://github.com/KA-MIS/survatlas/actions/workflows/docs-ci.yml/badge.svg)](https://github.com/KA-MIS/survatlas/actions/workflows/docs-ci.yml)
+
+**[Portfolio website](https://ka-mis.github.io)** · **[Release roadmap](ROADMAP.md)** · **[Contributing](CONTRIBUTING.md)** · **[Report an issue](https://github.com/KA-MIS/survatlas/issues/new/choose)**
+
+<sub>The badge checks public documentation links and image references; it does not represent private application build or safety validation.</sub>
 
 </div>
 
@@ -147,6 +157,9 @@ The following milestones are **completed engineering work**, recorded retrospect
 **What completed means here:** These are implementation or initial-test milestones, **not** confirmation that the finished tablet has passed emergency-readiness testing or that independent offline test evidence and complete AI benchmarks have been published. The open issues below track that remaining work.
 
 ## Public engineering roadmap
+
+For the planned release stages and verification gates, see **[ROADMAP.md](ROADMAP.md)**. No public release date has been announced.
+
 
 Each workstream below is a real GitHub issue with acceptance criteria. This makes the plan inspectable and allows progress to be documented as testing and implementation continue.
 
