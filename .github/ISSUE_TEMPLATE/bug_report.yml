@@ -1,0 +1,29 @@
+name: Documentation or showcase bug
+description: Report an issue with public documentation, images, or project information
+title: "[Docs] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "This is the public SurvAtlas showcase, not the private application source repository. Please do not post secrets or private code."
+  - type: input
+    id: location
+    attributes:
+      label: Affected page or section
+      placeholder: "README — Engineering validation"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Describe the problem and expected correction.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting information
+      description: Links, non-sensitive screenshots, or steps to reproduce
+    validations:
+      required: false
