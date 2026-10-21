@@ -1,10 +1,12 @@
 # SurvAtlas
 
-### Offline-first survival intelligence · Local AI · Navigation · ARM64 systems
+### Emergency-ready tablet concept · Offline intelligence · Local AI · Navigation
 
 **An independent software engineering project developed over approximately one year.**
 
-SurvAtlas is an offline-first platform designed to make essential information and digital tools available in environments where internet access is limited, unreliable, or unavailable. It brings together local mapping, navigation, an AI assistant, and a structured reference library in a single application.
+**SurvAtlas is being developed as the software foundation for a portable emergency-preparedness tablet.** The intended device would give people access to locally stored survival and medical references, maps, navigation, and an AI assistant when internet access is limited, unreliable, or unavailable.
+
+The tablet is the **product vision**, not a completed or safety-certified device. The current work centers on software integration, offline validation, and preparation for physical ARM64 hardware.
 
 The project has evolved through sustained development, integration work, and deployment experiments—not a one-day prototype. It is an ongoing engineering effort focused on practical offline computing, resource efficiency, and reliable access to information.
 
@@ -25,7 +27,14 @@ The project has evolved through sustained development, integration work, and dep
 | AI | Ollama-based local inference integration |
 | Knowledge | Survival and medical reference content; Kiwix integration work |
 | Deployment | Docker, ARM64 container builds and emulated testing |
+| Product vision | Portable, touch-first emergency-preparedness tablet |
 | Target direction | Resource-conscious deployment on ARM64 single-board computers |
+
+## The tablet vision
+
+The long-term goal is a self-contained, battery-powered tablet that people can use to consult essential information and navigate during emergencies. The intended experience prioritizes fast access to locally available resources, a touch-friendly interface, and operation without routine dependence on cloud services.
+
+**The physical tablet, battery system, and end-to-end emergency workflows remain development goals.** SurvAtlas is not currently represented as a validated emergency communications system, medical device, or substitute for professional emergency services.
 
 ## The engineering challenge
 
@@ -101,7 +110,17 @@ Additional observations:
 
 ## Engineering roadmap
 
-The roadmap is organized by **technical readiness**, rather than speculative release dates.
+The roadmap is organized by **technical readiness**, rather than speculative release dates. Track the major workstreams through [GitHub Issues](https://github.com/KA-MIS/survatlas/issues); each issue has concrete acceptance criteria.
+
+| Workstream | Tracking issue | State |
+| --- | --- | --- |
+| Offline emergency workflows | [#1 — Disconnected operation](https://github.com/KA-MIS/survatlas/issues/1) | Planned validation |
+| Physical emergency tablet | [#2 — Hardware prototype](https://github.com/KA-MIS/survatlas/issues/2) | Planned |
+| Performance and power | [#3 — Benchmarks and battery](https://github.com/KA-MIS/survatlas/issues/3) | Planned |
+| Emergency-focused interface | [#4 — Reliable UX](https://github.com/KA-MIS/survatlas/issues/4) | Planned |
+| Demo and documentation | [#5 — Technical showcase](https://github.com/KA-MIS/survatlas/issues/5) | Planned |
+
+A GitHub Projects board can organize these issues into **Todo / In progress / Done** columns.
 
 ### Phase 1 — Offline validation
 - [ ] Test the application with external network connectivity disabled.
@@ -116,10 +135,11 @@ The roadmap is organized by **technical readiness**, rather than speculative rel
 - [ ] Investigate startup time, service recovery, and failure behavior.
 - [ ] Improve dataset handling, storage usage, and offline resource management.
 
-### Phase 3 — Physical ARM64 deployment
+### Phase 3 — Physical ARM64 emergency tablet
+- [ ] Define the tablet hardware, display, power, and battery requirements.
 - [ ] Deploy to a physical ARM64 single-board computer.
 - [ ] Compare real-hardware results with emulated benchmarks.
-- [ ] Test thermal behavior, sustained performance, and practical resource limits.
+- [ ] Test thermal behavior, battery endurance, sustained performance, and practical resource limits.
 - [ ] Refine container configuration for the target hardware.
 
 ### Phase 4 — Product quality
@@ -166,6 +186,6 @@ This showcase will become more useful as the project matures. Planned additions 
 
 **Maintainer:** [KA-MIS](https://github.com/KA-MIS)  
 **Project:** SurvAtlas  
-**Focus:** Full-stack software engineering, offline-first architecture, local AI integration, and ARM64 deployment.
+**Focus:** Emergency tablet systems, full-stack software engineering, offline-first architecture, local AI integration, and ARM64 deployment.
 
 *SurvAtlas is under active development. Feature descriptions and measurements reflect the current documented state and will be updated as validation progresses.*
