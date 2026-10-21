@@ -17,7 +17,7 @@ An independent, approximately year-long engineering project exploring how useful
 ---
 
 > [!IMPORTANT]
-> **Project stage: Active research, software development and hardware prototyping.** SurvAtlas is intended to become a portable, battery-powered emergency-preparedness tablet. A finished tablet and fully validated offline operation are **not yet claimed**. This repository is the **public documentation/showcase**, not the private application source code.
+> **Project stage: Active research, software development and hardware prototyping.** SurvAtlas is intended to become a portable, battery-powered emergency-preparedness tablet. The **current software runs fully offline**, according to development testing; physical tablet deployment, reproducible external verification, and emergency-readiness validation remain future work. This repository is the **public documentation/showcase**, not the private application source code.
 
 ## Why SurvAtlas?
 
@@ -29,7 +29,7 @@ The engineering challenge is to bring these components together while keeping th
 
 **Product vision:** A person should be able to turn on the tablet and access its locally stored resources without relying on a cloud account or active internet connection.
 
-This is a design objective, **not a statement that the complete device has passed emergency-readiness testing**.
+**Current status:** The software's features work without internet access. This is distinct from validating the eventual battery-powered tablet for real-world emergency use.
 
 ## Application gallery
 
@@ -60,17 +60,17 @@ This is a design objective, **not a statement that the complete device has passe
 
 <p align="center"><img src="assets/logo2.jfif" alt="SurvAtlas shield emblem" width="110" /></p>
 
-> **Development note:** These screenshots show implemented interfaces. The local AI assistant **works without an internet connection**, but its model performance and responses are **still being tuned and evaluated**. The screenshots do not establish physical-tablet readiness, medical-information accuracy, or that every SurvAtlas feature has completed end-to-end offline testing.
+> **Development note:** These screenshots show implemented interfaces. The local AI assistant **works without an internet connection**, but its model performance and responses are **still being tuned and evaluated**. The software operates fully offline, while physical-tablet readiness, medical-information accuracy, and independent reproducible testing remain separate concerns.
 
 ## The intended tablet experience
 
 | Capability | User benefit | Current engineering status |
 | --- | --- | --- |
-| **Offline maps** | Browse locally stored geographic information | MapLibre integration implemented; disconnected workflow testing pending |
-| **Local route planning** | Calculate routes without relying on online directions | Valhalla service integrated; complete offline validation pending |
-| **On-device AI assistant** | Interact with a locally hosted language model | Ollama integration implemented; full system performance testing pending |
-| **Survival reference library** | Consult locally available practical information | Content organization and library interfaces in development |
-| **Medical reference access** | Find reference information when connectivity is unavailable | Application interfaces developed; content quality and offline validation ongoing |
+| **Offline maps** | Browse locally stored geographic information | Implemented and working offline; formal reproducible test documentation pending |
+| **Local route planning** | Calculate routes without relying on online directions | Implemented and working offline; formal reproducible test documentation pending |
+| **On-device AI assistant** | Interact with a locally hosted language model | Working fully offline; model quality tuning and performance testing ongoing |
+| **Survival reference library** | Consult locally available practical information | Local access works offline; content curation and refinement ongoing |
+| **Medical reference access** | Find reference information when connectivity is unavailable | Offline access working; medical content accuracy review ongoing |
 | **Portable touchscreen device** | Use the system as a standalone emergency tablet | Hardware integration and battery validation planned |
 
 > [!CAUTION]
@@ -126,8 +126,8 @@ SurvAtlas has progressed through application development, offline-service integr
 | Engineering stage | Work undertaken | Evidence / next step |
 | --- | --- | --- |
 | **Foundation** | Next.js application, TypeScript, user interfaces, local data integration | Core application developed |
-| **Offline information** | Mapping, routing, survival and medical content workflows | Integrated components; verify fully disconnected operation |
-| **Local intelligence** | Ollama-backed assistant integration | Validate local-only behavior and model resource use |
+| **Offline information** | Mapping, routing, survival and medical content workflows | Offline operation reported working; document reproducible test coverage |
+| **Local intelligence** | Ollama-backed assistant integration | Offline behavior working; tune model quality and benchmark resources |
 | **Deployment research** | Docker packaging and ARM64 build experiments | Successful emulated ARM64 build and production startup |
 | **Portable hardware** | Investigating the requirements of a self-contained tablet | Physical integration, battery and endurance testing remain |
 
@@ -144,7 +144,7 @@ The following milestones are **completed engineering work**, recorded retrospect
 | Ollama local AI integration and initial reference workflows | [#8 — Local AI & knowledge](https://github.com/KA-MIS/survatlas/issues/8) · Completed |
 | Successful emulated ARM64 production build, TypeScript validation, and initial measurements | [#9 — ARM64 build & snapshot](https://github.com/KA-MIS/survatlas/issues/9) · Completed |
 
-**What completed means here:** These are implementation or initial-test milestones, **not** confirmation that the finished tablet, disconnected emergency workflows, or complete AI stack have passed end-to-end validation. The open issues below track that remaining work.
+**What completed means here:** These are implementation or initial-test milestones, **not** confirmation that the finished tablet has passed emergency-readiness testing or that independent offline test evidence and complete AI benchmarks have been published. The open issues below track that remaining work.
 
 ## Public engineering roadmap
 
@@ -152,13 +152,13 @@ Each workstream below is a real GitHub issue with acceptance criteria. This make
 
 | Priority | Workstream | Tracking |
 | --- | --- | --- |
-| 01 | Validate complete operation without internet access | [Issue #1 — Offline emergency workflows](https://github.com/KA-MIS/survatlas/issues/1) |
+| 01 | Document and independently reproduce complete offline operation | [Issue #1 — Offline emergency workflows](https://github.com/KA-MIS/survatlas/issues/1) |
 | 02 | Prototype the physical ARM64 emergency tablet | [Issue #2 — Tablet hardware](https://github.com/KA-MIS/survatlas/issues/2) |
 | 03 | Benchmark performance, thermals, and battery endurance | [Issue #3 — Performance & power](https://github.com/KA-MIS/survatlas/issues/3) |
 | 04 | Refine the touch-first emergency user experience | [Issue #4 — Reliable interface](https://github.com/KA-MIS/survatlas/issues/4) |
 | 05 | Publish a reproducible demonstration and technical documentation | [Issue #5 — Demo & documentation](https://github.com/KA-MIS/survatlas/issues/5) |
 
-**Near-term focus:** Verify disconnected workflows, measure the *complete* application stack including local AI, and prepare deployment to physical ARM64 hardware.
+**Near-term focus:** Document and reproduce the already working offline workflows, measure the *complete* application stack including local AI, and prepare deployment to physical ARM64 hardware.
 
 **Longer-term focus:** Validate a portable device's power system, thermal behavior, storage, accessibility, startup/recovery behavior, and reliability in representative use cases.
 
@@ -182,13 +182,13 @@ Additional observations:
 - One Docker CPU sample reported **66.15%** using Docker's per-core accounting.
 - Production server readiness was reported in **2.5 seconds** following build completion.
 
-**Limitations:** These figures are snapshots, not peak or sustained-load measurements. They come from **ARM64 emulation**, not a physical tablet or single-board computer. **Ollama ran outside the containers on the Windows host**, so its model memory is **excluded**. Battery life, total device power draw, thermal performance, and full offline operation have **not** been established by these measurements.
+**Limitations:** These figures are snapshots, not peak or sustained-load measurements. They come from **ARM64 emulation**, not a physical tablet or single-board computer. **Ollama ran outside the containers on the Windows host**, so its model memory is **excluded**. Battery life, total device power draw, and thermal performance have **not** been established by these measurements. Offline functionality is reported working in development, but this benchmark snapshot is not itself an offline test report.
 
 Publishing both the results and their limitations is part of the project's engineering approach.
 
 ## Design priorities
 
-**Offline independence.** Keep the intended core workflows functional without an internet connection.
+**Offline independence.** The current software works without an internet connection; preserve and systematically test this capability through future releases.
 
 **Resource-conscious integration.** Treat local AI, routing, and map datasets as a combined hardware and software budget.
 
@@ -208,7 +208,7 @@ A technical walkthrough or source-code review can be discussed on request, subje
 
 ### What will be added next?
 
-- Actual application and tablet-prototype photographs/screenshots when available.
+- Additional application screenshots and physical tablet-prototype photographs when available.
 - A concise demonstration video showing verified features.
 - Repeatable benchmark and offline test procedures.
 - Physical ARM64 hardware measurements and an architecture deep dive.
