@@ -1,0 +1,54 @@
+name: Documentation CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/workflows/docs-ci.yml'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/workflows/docs-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check local Markdown links and images
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote
+          import re
+          root = Path('.').resolve()
+          failures = []
+          for doc in root.rglob('*.md'):
+              if '.git' in doc.parts:
+                  continue
+              content = doc.read_text(encoding='utf-8')
+              refs = re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', content)
+              refs += re.findall(r'<(?:img|a)\b[^>]*(?:src|href)="([^"]+)"', content)
+              for ref in refs:
+                  ref = ref.strip().split(' ', 1)[0].strip('<>')
+                  if not ref or ref.startswith(('https://', 'http://', 'mailto:', '#', 'data:')):
+                      continue
+                  local = unquote(ref.split('#', 1)[0].split('?', 1)[0])
+                  if not local:
+                      continue
+                  target = (root / local.lstrip('/')) if local.startswith('/') else (doc.parent / local)
+                  target = target.resolve()
+                  if not target.is_relative_to(root) or not target.exists():
+                      failures.append(f'{doc}: broken local reference: {ref}')
+          if failures:
+              raise SystemExit('\n'.join(failures))
+          print('Local Markdown links and images validated.')
+          PY
