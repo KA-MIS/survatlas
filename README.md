@@ -29,6 +29,12 @@ The engineering challenge is to bring these components together while keeping th
 
 This is a design objective, **not a statement that the complete device has passed emergency-readiness testing**.
 
+## Current application preview
+
+SurvAtlas already has a working development interface used to integrate, debug, and test its main systems. The current UI is intentionally functional rather than visually final: **the present priority is software correctness, offline behavior, and hardware readiness before a full visual redesign**.
+
+The project has real development screenshots of its **system dashboard**, **offline Lithuania map and navigation interface**, and **local coding assistant**. These will be published in a screenshot gallery once the image assets have been added to this public repository. The screenshots show the current application state, not a finished tablet or proof of fully disconnected operation.
+
 ## The intended tablet experience
 
 | Capability | User benefit | Current engineering status |
@@ -186,7 +192,7 @@ A technical walkthrough or source-code review can be discussed on request, subje
 
 **SurvAtlas** · Independent engineering project · Active development
 
-Maintained by [KA-MIS](https://github.com/KA-MIS)
+Maintained by [KA-MIS](https://github.com/KA-MIS) · **Contact:** [info@survatlas.com](mailto:info@survatlas.com)
 
 *Building toward an offline-first emergency tablet, one verified milestone at a time.*
 
