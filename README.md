@@ -33,7 +33,11 @@ This is a design objective, **not a statement that the complete device has passe
 
 ## Application gallery
 
-These are **real screenshots of the current SurvAtlas development build**, not mockups or renders. The interface is functional and used for integration, debugging, and testing; visual refinement will follow the ongoing reliability and hardware work.
+> [!CAUTION]
+> ### 🔴 DEVELOPMENT BUILD — NOT THE FINAL DESIGN
+> **These are real screenshots of the current SurvAtlas development build — not mockups or renders.**
+>
+> The interface is **functional and actively used for integration, debugging, and testing**. Visual refinement will follow the ongoing reliability and hardware work. **These screenshots do not represent the final tablet design.**
 
 <table>
   <tr>
