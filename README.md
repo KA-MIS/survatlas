@@ -60,7 +60,7 @@ This is a design objective, **not a statement that the complete device has passe
 
 <p align="center"><img src="assets/logo2.jfif" alt="SurvAtlas shield emblem" width="110" /></p>
 
-> **Development note:** Screenshots illustrate implemented interfaces. They do not, by themselves, verify complete disconnected operation, production hardware readiness, or the accuracy of AI-generated or medical information.
+> **Development note:** These screenshots show implemented interfaces. The local AI assistant **works without an internet connection**, but its model performance and responses are **still being tuned and evaluated**. The screenshots do not establish physical-tablet readiness, medical-information accuracy, or that every SurvAtlas feature has completed end-to-end offline testing.
 
 ## The intended tablet experience
 
