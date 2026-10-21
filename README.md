@@ -213,6 +213,8 @@ A technical walkthrough or source-code review can be discussed on request, subje
 
 <div align="center">
 
+<img src="assets/logo2.jfif" alt="SurvAtlas shield emblem" width="130" />
+
 **SurvAtlas** · Independent engineering project · Active development
 
 Maintained by [KA-MIS](https://github.com/KA-MIS) · **Contact:** [info@survatlas.com](mailto:info@survatlas.com)
