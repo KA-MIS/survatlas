@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/logo1.jfif" alt="SurvAtlas wordmark and emblem" width="100%" />
+
 # SurvAtlas
 
 ### An offline-first emergency information tablet — in development
@@ -29,11 +31,32 @@ The engineering challenge is to bring these components together while keeping th
 
 This is a design objective, **not a statement that the complete device has passed emergency-readiness testing**.
 
-## Current application preview
+## Application gallery
 
-SurvAtlas already has a working development interface used to integrate, debug, and test its main systems. The current UI is intentionally functional rather than visually final: **the present priority is software correctness, offline behavior, and hardware readiness before a full visual redesign**.
+These are **real screenshots of the current SurvAtlas development build**, not mockups or renders. The interface is functional and used for integration, debugging, and testing; visual refinement will follow the ongoing reliability and hardware work.
 
-The project has real development screenshots of its **system dashboard**, **offline Lithuania map and navigation interface**, and **local coding assistant**. These will be published in a screenshot gallery once the image assets have been added to this public repository. The screenshots show the current application state, not a finished tablet or proof of fully disconnected operation.
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/1.png" alt="SurvAtlas system dashboard with power, storage, and system status" width="100%" />
+      <br /><strong>System dashboard</strong><br />Power, storage, status, and quick-access modules
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/2.png" alt="SurvAtlas local coding assistant chat interface" width="100%" />
+      <br /><strong>Local coding assistant</strong><br />Chat history, code responses, and local-model integration
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+  <img src="assets/3.png" alt="SurvAtlas offline Lithuania map with navigation tools and places categories" width="80%" />
+  <br /><strong>Offline mapping interface</strong><br />
+  Local Lithuania map data, route-planning controls, and location tools
+</div>
+
+<p align="center"><img src="assets/logo2.jfif" alt="SurvAtlas shield emblem" width="110" /></p>
+
+> **Development note:** Screenshots illustrate implemented interfaces. They do not, by themselves, verify complete disconnected operation, production hardware readiness, or the accuracy of AI-generated or medical information.
 
 ## The intended tablet experience
 
