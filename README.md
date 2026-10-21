@@ -100,6 +100,19 @@ SurvAtlas has progressed through application development, offline-service integr
 
 The roadmap tracks **readiness and verification**, rather than announcing dates that have not been established.
 
+## Verified development milestones
+
+The following milestones are **completed engineering work**, recorded retrospectively because SurvAtlas was developed locally before its public GitHub showcase was established.
+
+| Completed work | Evidence in public tracking |
+| --- | --- |
+| Core Next.js / TypeScript application and local-data foundation | [#6 — Application foundation](https://github.com/KA-MIS/survatlas/issues/6) · Completed |
+| MapLibre mapping and Valhalla routing component integration | [#7 — Maps & routing](https://github.com/KA-MIS/survatlas/issues/7) · Completed |
+| Ollama local AI integration and initial reference workflows | [#8 — Local AI & knowledge](https://github.com/KA-MIS/survatlas/issues/8) · Completed |
+| Successful emulated ARM64 production build, TypeScript validation, and initial measurements | [#9 — ARM64 build & snapshot](https://github.com/KA-MIS/survatlas/issues/9) · Completed |
+
+**What completed means here:** These are implementation or initial-test milestones, **not** confirmation that the finished tablet, disconnected emergency workflows, or complete AI stack have passed end-to-end validation. The open issues below track that remaining work.
+
 ## Public engineering roadmap
 
 Each workstream below is a real GitHub issue with acceptance criteria. This makes the plan inspectable and allows progress to be documented as testing and implementation continue.
