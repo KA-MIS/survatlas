@@ -1,0 +1,29 @@
+name: Improvement proposal
+description: Suggest a documentation, validation, or project-showcase improvement
+title: "[Proposal] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Review the public roadmap and existing issues first. The application source is private."
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What need would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the smallest useful change.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: How could this be verified?
+      description: Suggest acceptance criteria or evidence.
+    validations:
+      required: false
