@@ -1,191 +1,180 @@
+<div align="center">
+
 # SurvAtlas
 
-### Emergency-ready tablet concept · Offline intelligence · Local AI · Navigation
+### An offline-first emergency information tablet — in development
 
-**An independent software engineering project developed over approximately one year.**
+**Local AI · Offline maps & routing · Reference library · ARM64**
 
-**SurvAtlas is being developed as the software foundation for a portable emergency-preparedness tablet.** The intended device would give people access to locally stored survival and medical references, maps, navigation, and an AI assistant when internet access is limited, unreliable, or unavailable.
+An independent, approximately year-long engineering project exploring how useful information and navigation tools can remain accessible when connectivity cannot be relied upon.
 
-The tablet is the **product vision**, not a completed or safety-certified device. The current work centers on software integration, offline validation, and preparation for physical ARM64 hardware.
+[**Explore the roadmap**](https://github.com/KA-MIS/survatlas/issues) · [**Development progress**](#development-progress) · [**Architecture**](#system-architecture) · [**Performance notes**](#engineering-validation)
 
-The project has evolved through sustained development, integration work, and deployment experiments—not a one-day prototype. It is an ongoing engineering effort focused on practical offline computing, resource efficiency, and reliable access to information.
-
-> **Status:** Active development and system validation  
-> **Repository:** Public project showcase and engineering documentation. Application source code is maintained separately in a private repository.  
-> **Last documented test snapshot:** 21 October 2026
+</div>
 
 ---
 
-## Project at a glance
+> [!IMPORTANT]
+> **Project stage: Active research, software development and hardware prototyping.** SurvAtlas is intended to become a portable, battery-powered emergency-preparedness tablet. A finished tablet and fully validated offline operation are **not yet claimed**. This repository is the **public documentation/showcase**, not the private application source code.
 
-| Area | Engineering focus |
+## Why SurvAtlas?
+
+Access to maps, instructions, and reference information often depends on internet connectivity. In an emergency, that dependency can become a serious limitation.
+
+**SurvAtlas aims to put essential digital resources into a self-contained tablet:** a touch-first interface for local maps, routing, survival and medical references, and a locally hosted AI assistant.
+
+The engineering challenge is to bring these components together while keeping the system practical for portable hardware: constrained memory, battery power, offline storage, reliability, and usability under pressure.
+
+**Product vision:** A person should be able to turn on the tablet and access its locally stored resources without relying on a cloud account or active internet connection.
+
+This is a design objective, **not a statement that the complete device has passed emergency-readiness testing**.
+
+## The intended tablet experience
+
+| Capability | User benefit | Current engineering status |
+| --- | --- | --- |
+| **Offline maps** | Browse locally stored geographic information | MapLibre integration implemented; disconnected workflow testing pending |
+| **Local route planning** | Calculate routes without relying on online directions | Valhalla service integrated; complete offline validation pending |
+| **On-device AI assistant** | Interact with a locally hosted language model | Ollama integration implemented; full system performance testing pending |
+| **Survival reference library** | Consult locally available practical information | Content organization and library interfaces in development |
+| **Medical reference access** | Find reference information when connectivity is unavailable | Application interfaces developed; content quality and offline validation ongoing |
+| **Portable touchscreen device** | Use the system as a standalone emergency tablet | Hardware integration and battery validation planned |
+
+> [!CAUTION]
+> SurvAtlas is an experimental preparedness project. It is **not** a certified medical device, an emergency communications system, or a replacement for emergency services or qualified professional guidance. Reference and AI-generated content must be independently evaluated for accuracy and suitability.
+
+## Technology and engineering scope
+
+| Layer | Technology / approach |
 | --- | --- |
 | Application | Next.js 16, React, TypeScript |
-| Data | SQLite and local-first data access |
-| Mapping | MapLibre with locally stored map resources |
-| Routing | Valhalla routing service |
-| AI | Ollama-based local inference integration |
-| Knowledge | Survival and medical reference content; Kiwix integration work |
-| Deployment | Docker, ARM64 container builds and emulated testing |
-| Product vision | Portable, touch-first emergency-preparedness tablet |
-| Target direction | Resource-conscious deployment on ARM64 single-board computers |
+| Local data | SQLite |
+| Mapping | MapLibre and locally stored map resources |
+| Routing | Valhalla |
+| Local AI | Ollama |
+| Knowledge resources | Local survival/medical content; Kiwix-oriented integration |
+| Packaging | Docker |
+| Target platform | ARM64 single-board computing hardware |
+| Product form factor | Portable, touch-first tablet concept |
 
-## The tablet vision
+### System architecture
 
-The long-term goal is a self-contained, battery-powered tablet that people can use to consult essential information and navigate during emergencies. The intended experience prioritizes fast access to locally available resources, a touch-friendly interface, and operation without routine dependence on cloud services.
+```text
+                   SURVATLAS EMERGENCY TABLET
+                  (planned physical device)
+                               |
+                     Touchscreen interface
+                               |
+                     SurvAtlas application
+                     Next.js / TypeScript
+                               |
+          +--------------------+--------------------+
+          |                    |                    |
+     Local knowledge       Mapping & routing      Local AI
+    SQLite / references    MapLibre / Valhalla     Ollama
+          |                    |                    |
+          +--------------------+--------------------+
+                               |
+                      Local compute & storage
+                       ARM64 deployment goal
+                               |
+                        Battery / enclosure
+                         (planned hardware)
+```
 
-**The physical tablet, battery system, and end-to-end emergency workflows remain development goals.** SurvAtlas is not currently represented as a validated emergency communications system, medical device, or substitute for professional emergency services.
+*Conceptual architecture. Individual services and datasets may run as separate processes or containers. The physical tablet is not presented as a completed implementation.*
 
-## The engineering challenge
+## Development progress
 
-Many modern applications assume permanent connectivity and cloud-hosted services. SurvAtlas explores a different architecture: keeping important functionality and reference materials accessible locally.
+### Built through approximately one year of iteration
 
-This requires more than building a web interface. The project involves coordinating services with different resource requirements, handling offline datasets, integrating locally hosted AI, packaging application components, and testing behavior under hardware constraints.
+SurvAtlas has progressed through application development, offline-service integration, local AI experimentation, and deployment testing. **The first GitHub source commit is not the project start date**: substantial work took place locally before the repository was established.
 
-**Core design principles**
-
-- **Offline-first:** Prioritize local availability rather than depending on a remote service for every interaction.
-- **Modular architecture:** Separate the application, routing, AI, and knowledge resources into manageable components.
-- **Hardware awareness:** Evaluate memory, CPU, storage, and deployment trade-offs.
-- **Practical usability:** Make complex offline capabilities accessible through a unified interface.
-- **Evidence-led development:** Distinguish implemented components from functionality that still needs end-to-end verification.
-
-## What has been built
-
-### Application and interface
-A Next.js/TypeScript application with interfaces for survival information, medical references, maps, assistant interactions, and related tools.
-
-### Offline maps and routing
-MapLibre integration for locally available mapping resources, alongside a Valhalla routing service. Complete disconnected, end-to-end behavior remains a validation target.
-
-### Local AI
-Ollama integration to explore on-device assistance without requiring a cloud-hosted language model. Full-model resource benchmarking and comprehensive offline testing are still in progress.
-
-### Reference and knowledge resources
-Work on organizing survival and medical content and connecting local reference resources, including a Kiwix-oriented offline knowledge workflow.
-
-### ARM64 deployment experiments
-Containerized ARM64 testing on an x86 Windows host, including a successful production build, TypeScript validation, production-server startup, and initial resource measurements.
-
----
-
-## Development journey
-
-**Approximately one year of iterative development**
-
-SurvAtlas has been developed across multiple stages of design, implementation, integration, and testing. The stages below describe the project's engineering progression; they are **not claimed to be individually dated milestones**.
-
-| Stage | Focus | Progress |
+| Engineering stage | Work undertaken | Evidence / next step |
 | --- | --- | --- |
-| **01 — Foundation** | Establish the application structure, TypeScript stack, interfaces, and local data approach | Implemented |
-| **02 — Offline capabilities** | Integrate mapping, routing, and reference-content workflows | Implemented components; full offline validation pending |
-| **03 — Local intelligence** | Connect locally hosted AI and assistant functionality | Integration implemented; comprehensive benchmarking pending |
-| **04 — Systems engineering** | Package services, test ARM64 builds, and investigate runtime resource use | Initial emulated ARM64 tests completed |
-| **05 — Hardware and reliability** | Validate on physical ARM64 hardware and under realistic disconnected workloads | Planned / in progress |
+| **Foundation** | Next.js application, TypeScript, user interfaces, local data integration | Core application developed |
+| **Offline information** | Mapping, routing, survival and medical content workflows | Integrated components; verify fully disconnected operation |
+| **Local intelligence** | Ollama-backed assistant integration | Validate local-only behavior and model resource use |
+| **Deployment research** | Docker packaging and ARM64 build experiments | Successful emulated ARM64 build and production startup |
+| **Portable hardware** | Investigating the requirements of a self-contained tablet | Physical integration, battery and endurance testing remain |
 
-This is a continuing project: its public Git history does not represent the full period of development. The code was developed locally before the first GitHub source snapshot was published.
+The roadmap tracks **readiness and verification**, rather than announcing dates that have not been established.
 
-## Technical validation
+## Public engineering roadmap
 
-### ARM64 performance snapshot — 21 October 2026
+Each workstream below is a real GitHub issue with acceptance criteria. This makes the plan inspectable and allows progress to be documented as testing and implementation continue.
 
-The following figures were observed during initial container testing on an x86 Windows host using ARM64 emulation.
+| Priority | Workstream | Tracking |
+| --- | --- | --- |
+| 01 | Validate complete operation without internet access | [Issue #1 — Offline emergency workflows](https://github.com/KA-MIS/survatlas/issues/1) |
+| 02 | Prototype the physical ARM64 emergency tablet | [Issue #2 — Tablet hardware](https://github.com/KA-MIS/survatlas/issues/2) |
+| 03 | Benchmark performance, thermals, and battery endurance | [Issue #3 — Performance & power](https://github.com/KA-MIS/survatlas/issues/3) |
+| 04 | Refine the touch-first emergency user experience | [Issue #4 — Reliable interface](https://github.com/KA-MIS/survatlas/issues/4) |
+| 05 | Publish a reproducible demonstration and technical documentation | [Issue #5 — Demo & documentation](https://github.com/KA-MIS/survatlas/issues/5) |
 
-| Component | Observed memory |
+**Near-term focus:** Verify disconnected workflows, measure the *complete* application stack including local AI, and prepare deployment to physical ARM64 hardware.
+
+**Longer-term focus:** Validate a portable device's power system, thermal behavior, storage, accessibility, startup/recovery behavior, and reliability in representative use cases.
+
+[**View all roadmap tasks →**](https://github.com/KA-MIS/survatlas/issues)
+
+## Engineering validation
+
+### Initial ARM64 test snapshot · 21 October 2026
+
+An ARM64 container build was tested through emulation on an x86 Windows host. The Next.js production build and TypeScript validation completed successfully, and the production server started.
+
+| Observed component | Memory at capture |
 | --- | ---: |
-| SurvAtlas / Next.js production container | ~400 MiB |
+| SurvAtlas application container | ~400 MiB |
 | Valhalla routing container | ~118 MiB |
-| **Combined observed container memory** | **~518 MiB** |
+| **Combined container snapshot** | **~518 MiB** |
 
 Additional observations:
 
-- The SurvAtlas container was configured with a **6 GiB memory limit** and **4 CPU limit**.
-- A captured Docker CPU reading was **66.15%** in Docker's per-core accounting.
-- The production server reported readiness in **2.5 seconds** after the build completed.
-- The ARM64 production build and TypeScript validation succeeded.
+- Application container configured with a **6 GiB RAM limit** and **4 CPU limit**.
+- One Docker CPU sample reported **66.15%** using Docker's per-core accounting.
+- Production server readiness was reported in **2.5 seconds** following build completion.
 
-**How to interpret these results:** These values are initial snapshots, not sustained load or peak-memory benchmarks. The environment used ARM64 emulation, so results should not be treated as measurements from a physical single-board computer. Ollama ran separately on the Windows host, meaning **AI model memory is not included** in the container figures. Complete offline operation has not yet been verified end to end.
+**Limitations:** These figures are snapshots, not peak or sustained-load measurements. They come from **ARM64 emulation**, not a physical tablet or single-board computer. **Ollama ran outside the containers on the Windows host**, so its model memory is **excluded**. Battery life, total device power draw, thermal performance, and full offline operation have **not** been established by these measurements.
 
----
+Publishing both the results and their limitations is part of the project's engineering approach.
 
-## Engineering roadmap
+## Design priorities
 
-The roadmap is organized by **technical readiness**, rather than speculative release dates. Track the major workstreams through [GitHub Issues](https://github.com/KA-MIS/survatlas/issues); each issue has concrete acceptance criteria.
+**Offline independence.** Keep the intended core workflows functional without an internet connection.
 
-| Workstream | Tracking issue | State |
-| --- | --- | --- |
-| Offline emergency workflows | [#1 — Disconnected operation](https://github.com/KA-MIS/survatlas/issues/1) | Planned validation |
-| Physical emergency tablet | [#2 — Hardware prototype](https://github.com/KA-MIS/survatlas/issues/2) | Planned |
-| Performance and power | [#3 — Benchmarks and battery](https://github.com/KA-MIS/survatlas/issues/3) | Planned |
-| Emergency-focused interface | [#4 — Reliable UX](https://github.com/KA-MIS/survatlas/issues/4) | Planned |
-| Demo and documentation | [#5 — Technical showcase](https://github.com/KA-MIS/survatlas/issues/5) | Planned |
+**Resource-conscious integration.** Treat local AI, routing, and map datasets as a combined hardware and software budget.
 
-A GitHub Projects board can organize these issues into **Todo / In progress / Done** columns.
+**Human-centered emergency use.** Prioritize readability, straightforward navigation, touch interaction, and clear system status.
 
-### Phase 1 — Offline validation
-- [ ] Test the application with external network connectivity disabled.
-- [ ] Verify local maps and routing with representative offline datasets.
-- [ ] Validate assistant behavior with local AI services only.
-- [ ] Verify access to reference materials without internet connectivity.
-- [ ] Document setup requirements and reproducible test procedures.
+**Reliability over feature count.** Test what happens when services fail, resources run low, or the device restarts.
 
-### Phase 2 — Performance and resilience
-- [ ] Benchmark AI model memory, CPU usage, and response latency.
-- [ ] Measure total system resources under concurrent workloads.
-- [ ] Investigate startup time, service recovery, and failure behavior.
-- [ ] Improve dataset handling, storage usage, and offline resource management.
+**Transparent verification.** Separate working integrations, experimental features, and future goals.
 
-### Phase 3 — Physical ARM64 emergency tablet
-- [ ] Define the tablet hardware, display, power, and battery requirements.
-- [ ] Deploy to a physical ARM64 single-board computer.
-- [ ] Compare real-hardware results with emulated benchmarks.
-- [ ] Test thermal behavior, battery endurance, sustained performance, and practical resource limits.
-- [ ] Refine container configuration for the target hardware.
+## About this repository
 
-### Phase 4 — Product quality
-- [ ] Improve accessibility, usability, and small-screen interactions.
-- [ ] Expand automated testing and operational documentation.
-- [ ] Establish a repeatable release and versioning workflow.
-- [ ] Prepare a public demonstration of the tested feature set.
+This repository serves as the **public SurvAtlas project portfolio** for engineers, recruiters, and interested collaborators. It documents the concept, engineering choices, development journey, tests, and roadmap.
 
-*Roadmap items are development goals, not promises of delivery dates or claims of completed functionality.*
+The **application source code is maintained in a separate private repository**. This showcase does not distribute private configuration, credentials, model files, or large local datasets.
 
-## Architecture overview
+A technical walkthrough or source-code review can be discussed on request, subject to access approval.
 
-```text
-                     SurvAtlas application
-                     Next.js · TypeScript
-                              |
-             +----------------+----------------+
-             |                |                |
-       Local data       Offline mapping    Local assistant
-         SQLite            MapLibre            Ollama
-                              |
-                           Routing
-                           Valhalla
-                              |
-                     Local knowledge and
-                     reference resources
-```
+### What will be added next?
 
-The diagram is a conceptual overview; individual services and datasets may run in separate processes or containers.
-
-## Project ownership and access
-
-SurvAtlas is an **independently developed personal engineering project**. This public repository exists to document the design, development progress, technical decisions, and test results for interested engineers, recruiters, and potential collaborators.
-
-The implementation is maintained in a **separate private source repository**. Local datasets, model files, credentials, and other environment-specific assets are not distributed through this showcase.
-
-**Technical review:** Source-code access or a guided project walkthrough can be discussed upon request.
-
-## Next documentation milestones
-
-This showcase will become more useful as the project matures. Planned additions include application screenshots, a short feature demonstration, reproducible performance results, and a more detailed architecture walkthrough.
+- Actual application and tablet-prototype photographs/screenshots when available.
+- A concise demonstration video showing verified features.
+- Repeatable benchmark and offline test procedures.
+- Physical ARM64 hardware measurements and an architecture deep dive.
 
 ---
 
-**Maintainer:** [KA-MIS](https://github.com/KA-MIS)  
-**Project:** SurvAtlas  
-**Focus:** Emergency tablet systems, full-stack software engineering, offline-first architecture, local AI integration, and ARM64 deployment.
+<div align="center">
 
-*SurvAtlas is under active development. Feature descriptions and measurements reflect the current documented state and will be updated as validation progresses.*
+**SurvAtlas** · Independent engineering project · Active development
+
+Maintained by [KA-MIS](https://github.com/KA-MIS)
+
+*Building toward an offline-first emergency tablet, one verified milestone at a time.*
+
+</div>
