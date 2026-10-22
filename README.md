@@ -94,9 +94,10 @@ The engineering challenge is to bring these components together while keeping th
 | Local data | SQLite |
 | Mapping | MapLibre and locally stored map resources |
 | Routing | Valhalla |
-| Local AI | Ollama |
+| Local AI | Ollama (earlier development); llama.cpp (Debian kiosk prototype) |
 | Knowledge resources | Local survival/medical content; Kiwix-oriented integration |
 | Packaging | Docker |
+| OS prototype | Debian 13 x86-64, LightDM, Openbox, Chromium kiosk, systemd |
 | Target platform | ARM64 single-board computing hardware |
 | Product form factor | Portable, touch-first tablet concept |
 
@@ -139,9 +140,25 @@ SurvAtlas has progressed through application development, offline-service integr
 | **Offline information** | Mapping, routing, survival and medical content workflows | Offline operation reported working; document reproducible test coverage |
 | **Local intelligence** | Ollama-backed assistant integration | Offline behavior working; tune model quality and benchmark resources |
 | **Deployment research** | Docker packaging and ARM64 build experiments | Successful emulated ARM64 build and production startup |
+| **Debian kiosk prototype** | Branded boot, LightDM autologin, Chromium kiosk, systemd local app/AI, dashboard readiness signal | Working x86-64 VirtualBox prototype; ARM64 hardware port pending |
 | **Portable hardware** | Investigating the requirements of a self-contained tablet | Physical integration, battery and endurance testing remain |
 
 The roadmap tracks **readiness and verification**, rather than announcing dates that have not been established.
+
+### October 2026 — SurvAtlas OS kiosk prototype
+
+A dedicated **SurvAtlas OS** environment now runs as a working **Debian 13 x86-64 VirtualBox prototype**. The current development machine boots into a branded SurvAtlas experience rather than requiring users to launch the application manually.
+
+- **Custom startup experience:** a branded fullscreen loading screen runs while the local application starts.
+- **Automatic kiosk launch:** LightDM autologin starts a dedicated Openbox session and fullscreen Chromium dashboard.
+- **Local service startup:** systemd manages the Next.js application and a local `llama.cpp` AI server using an offline GGUF model.
+- **Dashboard readiness handshake:** the application calls `POST /api/boot-ready`, allowing the kiosk launcher to dismiss its loading screen when the dashboard signals startup.
+- **Quieter boot and recovery-oriented orchestration:** Debian/GRUB configuration and launcher logic reduce startup distractions and handle application readiness.
+- **Versioned OS configuration:** startup scripts, service unit snapshots, LightDM settings, and GRUB reference configuration are preserved in the separate [SurvAtlas OS repository](https://github.com/KA-MIS/survatlas-os).
+
+**Scope of validation:** The startup sequence and splash-to-dashboard transition were tested in VirtualBox. This is **not yet** a bootable downloadable OS image, reproducible installer, or tested Orange Pi 6 Plus ARM64 build. Hardware-specific bootloader, kernel, graphics/touch, storage, and power integration remain future work.
+
+**AI deployment note:** The Debian kiosk prototype uses `llama.cpp`; earlier application and container experiments used Ollama. These represent different local AI runtime configurations, not cloud dependencies.
 
 ## Verified development milestones
 
