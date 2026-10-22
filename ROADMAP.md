@@ -1,82 +1,64 @@
-# SurvAtlas release roadmap
+# SurvAtlas development roadmap
 
-SurvAtlas is an experimental offline-first emergency information platform. This roadmap describes **planned readiness milestones**, not promised release dates. Features already working in development are distinguished from verification still required.
+SurvAtlas is an experimental project exploring an offline-first emergency information tablet. This roadmap shares the project's direction and broad milestones; it does not promise release dates.
 
-The [public issue tracker](https://github.com/KA-MIS/survatlas/issues) contains the detailed work items and acceptance criteria.
+## Current stage — Software prototype
 
-## Milestone 0 — Working offline software (development baseline)
+**Status: In development**
 
-**Status: Implemented in development; external verification pending**
+The software prototype brings together a dashboard, locally available information, maps, and an on-device AI assistant. A separate OS prototype is being developed to provide a branded startup and kiosk-style application experience.
 
-- Next.js/TypeScript interface and local data integration
-- Offline map browsing and Valhalla routing
-- Local Ollama assistant and offline reference workflows
-- Initial Docker packaging and emulated ARM64 build
+Recent progress includes:
+- A branded startup and loading experience
+- Automatic launch into the local application dashboard
+- Integration work for a locally running AI assistant
+- Code-quality improvements and a successful local production build
+- Ongoing refinement of navigation, search, saved places, and device status
 
-These milestones represent functional development work, **not** a validated physical emergency tablet. See [completed milestones](https://github.com/KA-MIS/survatlas/issues?q=is%3Aissue+is%3Aclosed).
+This is a software milestone, not a finished physical tablet or a production-ready release.
 
-### 22 October 2026 — Development baseline verification update
+## Milestone 1 — Repeatable offline demonstration
 
-The working application baseline has advanced beyond initial feature integration:
+**Status: Verification in progress**
 
-- **Code quality:** Eight reported ESLint errors were resolved; `npm run lint -- --quiet` passed locally.
-- **Type safety:** `npx tsc --noEmit` passed locally.
-- **Production packaging:** Next.js 16.2.10 `npm run build` completed successfully in the Debian development VM.
-- **UI and state improvements:** AI/coding assistant error handling, battery status typing, navigation, saved-place synchronization, and survival search input were updated.
-- **OS integration:** A Debian 13 x86-64 VirtualBox kiosk prototype now boots into a branded splash and launches a local Chromium application session, with systemd-managed app and `llama.cpp` services and a dashboard readiness signal.
+- Document and repeat tests of core workflows without internet access
+- Record supported features, limitations, and failure cases
+- Check that startup and core workflows behave consistently after restart
+- Publish a demonstration only when its claims are supported by repeatable evidence
 
-**Evidence:** [Application fix commit `3657a0e`](https://github.com/KA-MIS/survatlas-development/commit/3657a0e) · [SurvAtlas OS prototype](https://github.com/KA-MIS/survatlas-os) · [Public development notes](README.md#development-progress).
-
-**Still required:** GitHub Actions result confirmation, hands-on regression tests of affected UI flows, reproducible offline end-to-end test procedures, and validation on actual ARM64 tablet hardware. A successful local build is not a release-readiness or emergency-safety certification.
-
-## Milestone 1 — Reproducible offline software demonstration
-
-**Status: Planned verification work**
-
-- Publish a repeatable offline test procedure covering maps, routing, references and AI
-- Document the precise services, datasets, and hardware used
-- Demonstrate startup and core workflows without connectivity
-- Record failure cases and known limitations
-
-Tracking: [#1 — Offline emergency workflows](https://github.com/KA-MIS/survatlas/issues/1), [#5 — Demo & documentation](https://github.com/KA-MIS/survatlas/issues/5)
-
-## Milestone 2 — Physical ARM64 prototype
+## Milestone 2 — Physical tablet prototype
 
 **Status: Planned**
 
-- Deploy the full stack on actual ARM64 hardware
-- Integrate touch display, storage, power system and enclosure
-- Measure startup, service recovery and usability on the device
-- Document integration decisions and constraints
+- Deploy the software on the intended physical hardware
+- Integrate the touchscreen, storage, power system, and enclosure
+- Evaluate the startup experience and everyday usability on-device
+- Document hardware-specific constraints and remaining work
 
-Tracking: [#2 — Tablet hardware](https://github.com/KA-MIS/survatlas/issues/2)
-
-## Milestone 3 — Performance and reliability evaluation
+## Milestone 3 — Performance and reliability
 
 **Status: Planned**
 
-- Measure full-system RAM and CPU usage, including local AI
-- Test thermals and battery endurance under representative loads
-- Validate core workflows after restart and service failure
-- Improve touch interaction, readability and accessibility
+- Measure system resource use under representative workloads
+- Evaluate thermal behavior and battery endurance
+- Test recovery from restarts and service failures
+- Improve readability, touch interaction, and accessibility
 
-Tracking: [#3 — Performance & power](https://github.com/KA-MIS/survatlas/issues/3), [#4 — Reliable interface](https://github.com/KA-MIS/survatlas/issues/4)
-
-## Milestone 4 — Public technical demonstration
+## Milestone 4 — Public demonstration
 
 **Status: Planned**
 
-- Publish a demonstration of verified functionality
-- Share hardware photos, test methodology, and measured results
-- Document remaining limitations and unresolved risks
-- Decide whether a named preview release is warranted based on evidence
+- Share product-focused screenshots and a demonstration of verified features
+- Publish clear test scope and limitations
+- Report progress without exposing private implementation details
+- Decide on a public preview release when the demonstrated scope is ready
 
-Tracking: [#5 — Demo & documentation](https://github.com/KA-MIS/survatlas/issues/5)
+## How progress is reported
 
-## Release policy
+Public updates describe product goals and verified milestones. Implementation details, private source code, and internal deployment configuration are intentionally not part of this public showcase.
 
-There is **no announced release date or production-ready version**. Milestones advance only when their evidence and acceptance criteria are documented. Release names or tags, if introduced, will reflect verified scope rather than marketing deadlines.
+There is **no announced release date**. Milestones will advance as implementation and testing support them.
 
-SurvAtlas is **not a certified medical device, emergency communications service, or substitute for professional emergency guidance**. Medical and AI-generated information requires independent validation.
+SurvAtlas is experimental. It is **not a certified medical device, emergency communications service, or substitute for professional emergency guidance**. Medical and AI-generated information requires independent validation.
 
-[Back to project overview](README.md)
+[Back to the project overview](README.md)
