@@ -141,6 +141,7 @@ SurvAtlas has progressed through application development, offline-service integr
 | **Local intelligence** | Ollama-backed assistant integration | Offline behavior working; tune model quality and benchmark resources |
 | **Deployment research** | Docker packaging and ARM64 build experiments | Successful emulated ARM64 build and production startup |
 | **Debian kiosk prototype** | Branded boot, LightDM autologin, Chromium kiosk, systemd local app/AI, dashboard readiness signal | Working x86-64 VirtualBox prototype; ARM64 hardware port pending |
+| **Application quality pass (22 Oct 2026)** | Resolved eight ESLint errors; TypeScript check and Next.js 16.2.10 production build passed locally | [Development commit `3657a0e`](https://github.com/KA-MIS/survatlas-development/commit/3657a0e); CI and UI regression checks still to be confirmed |
 | **Portable hardware** | Investigating the requirements of a self-contained tablet | Physical integration, battery and endurance testing remain |
 
 The roadmap tracks **readiness and verification**, rather than announcing dates that have not been established.
@@ -169,7 +170,7 @@ The SurvAtlas application development branch `feature/survatlas-ai-engine` compl
 - **Production build:** `npm run build` completed successfully using **Next.js 16.2.10** (Turbopack), including route generation and page optimization.
 - **Code improvements:** Safer error handling in the AI and coding assistants; typed browser battery information; updates to bottom navigation, saved-place state synchronization, survival search input, and lint exclusions for vendored PDF.js assets.
 
-**Validation scope:** These checks were run locally in the Debian development environment. They demonstrate code-quality and build readiness, **not** a completed GitHub Actions CI result, physical ARM64 hardware validation, or end-to-end emergency reliability testing.
+**Validation scope:** These checks were run locally in the Debian development environment. They demonstrate code-quality and build readiness, **not** a completed GitHub Actions CI result, physical ARM64 hardware validation, or end-to-end emergency reliability testing. The updated saved-places, navigation, and search interactions still require hands-on regression testing. See the [release roadmap](ROADMAP.md) for the remaining verification gates.
 
 ## Verified development milestones
 
