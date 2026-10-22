@@ -15,6 +15,20 @@ The [public issue tracker](https://github.com/KA-MIS/survatlas/issues) contains 
 
 These milestones represent functional development work, **not** a validated physical emergency tablet. See [completed milestones](https://github.com/KA-MIS/survatlas/issues?q=is%3Aissue+is%3Aclosed).
 
+### 22 October 2026 — Development baseline verification update
+
+The working application baseline has advanced beyond initial feature integration:
+
+- **Code quality:** Eight reported ESLint errors were resolved; `npm run lint -- --quiet` passed locally.
+- **Type safety:** `npx tsc --noEmit` passed locally.
+- **Production packaging:** Next.js 16.2.10 `npm run build` completed successfully in the Debian development VM.
+- **UI and state improvements:** AI/coding assistant error handling, battery status typing, navigation, saved-place synchronization, and survival search input were updated.
+- **OS integration:** A Debian 13 x86-64 VirtualBox kiosk prototype now boots into a branded splash and launches a local Chromium application session, with systemd-managed app and `llama.cpp` services and a dashboard readiness signal.
+
+**Evidence:** [Application fix commit `3657a0e`](https://github.com/KA-MIS/survatlas-development/commit/3657a0e) · [SurvAtlas OS prototype](https://github.com/KA-MIS/survatlas-os) · [Public development notes](README.md#development-progress).
+
+**Still required:** GitHub Actions result confirmation, hands-on regression tests of affected UI flows, reproducible offline end-to-end test procedures, and validation on actual ARM64 tablet hardware. A successful local build is not a release-readiness or emergency-safety certification.
+
 ## Milestone 1 — Reproducible offline software demonstration
 
 **Status: Planned verification work**
